@@ -44,7 +44,7 @@ client.on("ready", async () => {
         }
         config.freeGamesId = freegames.data.children[0].data.id;
         fs.writeFileSync('./config.json', JSON.stringify(config));
-    }, 10000);
+    }, 600000);
 });
 client.on("exit", () => console.log("Disconnected!"));
 

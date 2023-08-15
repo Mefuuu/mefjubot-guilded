@@ -1,7 +1,7 @@
 {
     "name": "mefjubot",
     "private": true,
-    "version": "1.0.0",
+    "version": "1.0.0a",
     "description": "Og bocisko",
     "author": "Meffiu",
     "main": "dist/index.js",
