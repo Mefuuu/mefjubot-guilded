@@ -1,9 +1,9 @@
 {
-    "name": "guilded.js-example-bot-with-handler",
+    "name": "mefjubot",
     "private": true,
-    "version": "0.0.0",
-    "description": "Example project for using the guilded.js package",
-    "author": "Zaid \"Nico\" <contact@nico.engineer>",
+    "version": "1.0.0",
+    "description": "Og bocisko",
+    "author": "Meffiu",
     "main": "dist/index.js",
     "scripts": {
         "start": "node src/index.js"
@@ -13,6 +13,5 @@
         "dotenv": "^16.0.3",
         "guilded.js": "0.22.2",
         "node-fetch": "^3.3.2"
-    },
-    "repository": "https://github.com/guildedjs/guilded.js"
+    }
 }
