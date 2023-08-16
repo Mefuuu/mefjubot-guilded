@@ -2,7 +2,7 @@ require("dotenv/config");
 const { Collection } = require("@discordjs/collection");
 const { readdir } = require("fs/promises");
 const { join } = require("path");
-const { Client } = require("guilded.js");
+const { Client, Embed } = require("guilded.js");
 
 const config = require('../config.json');
 const fs = require('node:fs');
@@ -33,18 +33,26 @@ client.on("messageCreated", async (msg) => {
 client.on("error", console.log);
 client.on("ready", async () => {
     console.log("Guilded bot is ready!");
-    const forum = await client.channels.fetch('02e70088-254b-4390-a178-42cada05ed2f');
     setInterval (async function () {
         const freegames = await fetch('https://api.reddit.com/r/GameDealsFree/').then(res => res.json());
         const index = freegames.data.children.findIndex(e => e.data.id === config.freeGamesId);
         if (index === 0) return;
         for (i = index - 1; i >= 0; i--) {
             let game = freegames.data.children[i].data;
-            await forum.createTopic(game.title, game.url);
+            config.serverDatas.forEach(async (e) => {
+                const channel = await client.channels.fetch(e.channel, true);
+                const em = new Embed({
+                    author: { name: game.title, url: `https://www.reddit.com${game.permalink}` },
+                    image: { url: `${game.preview.images[0].source.url.replace('amp;', '')}` },
+                    footer: { text: 'Free Games!', icon_url: client.user.avatar },
+                    color: '#00FFFF'
+                });
+                await channel.send({ embeds: [em] });
+            });
         }
         config.freeGamesId = freegames.data.children[0].data.id;
         fs.writeFileSync('./config.json', JSON.stringify(config));
-    }, 600000);
+    }, 1800000);
 });
 client.on("exit", () => console.log("Disconnected!"));
 
