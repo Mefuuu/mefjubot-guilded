@@ -48,7 +48,12 @@ client.on("ready", async () => {
                     footer: { text: 'Free Games!', icon_url: client.user.avatar },
                     color: '#00FFFF'
                 });
-                await channel.send({ embeds: [em] });
+                try {
+                    await channel.send({ embeds: [em] });
+                }
+                catch (err) {
+                    console.log(err);
+                }
             });
         }
         await client.setStatus({ content: `Notifications on ${config.serverDatas.length} servers!`, emoteId: 90002579 });
