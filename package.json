@@ -1,7 +1,7 @@
 {
     "name": "freegames",
     "private": true,
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Tells you about games that are free!",
     "author": "Meffiu",
     "main": "dist/index.js",
@@ -12,7 +12,7 @@
         "@discordjs/collection": "^1.5.1",
         "@guildedjs/gil": "^0.4.13",
         "dotenv": "^16.0.3",
-        "guilded.js": "0.22.2",
+        "guilded.js": "^0.23.5",
         "node-fetch": "^3.3.2"
     }
 }

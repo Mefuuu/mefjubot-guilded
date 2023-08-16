@@ -33,6 +33,7 @@ client.on("messageCreated", async (msg) => {
 client.on("error", console.log);
 client.on("ready", async () => {
     console.log("Guilded bot is ready!");
+    await client.setStatus({ content: `Notifications on ${config.serverDatas.length} servers!`, emoteId: 90002579 });
     setInterval (async function () {
         const freegames = await fetch('https://api.reddit.com/r/GameDealsFree/').then(res => res.json());
         const index = freegames.data.children.findIndex(e => e.data.id === config.freeGamesId);
@@ -50,6 +51,7 @@ client.on("ready", async () => {
                 await channel.send({ embeds: [em] });
             });
         }
+        await client.setStatus({ content: `Notifications on ${config.serverDatas.length} servers!`, emoteId: 90002579 });
         config.freeGamesId = freegames.data.children[0].data.id;
         fs.writeFileSync('./config.json', JSON.stringify(config));
     }, 1800000);
