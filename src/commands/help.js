@@ -6,7 +6,8 @@ module.exports = {
     execute: async (msg) => {
         const settings = config.serverDatas.find(e => e.id === msg.serverId);
         const channel = settings ? await msg.client.channels.fetch(settings.channel) : '';
-        const status = settings ? `Notifications are active!\nChannel: #${channel.name} (${settings.channel})` : 'Notifications are inactive!'
+        const server = settings ? await msg.client.servers.fetch(settings.id) : '';
+        const status = settings ? `Notifications are active!\nChannel: [#${channel.name}](https://guilded.gg/${server.shortURL}/groups/${channel.groupId}/channels/${settings.channel}/chat)` : 'Notifications are inactive!'
         const e = new Embed({
             color: '#00FFFF',
             description: `Hello! I'm here to let you know if any game will be free!`,

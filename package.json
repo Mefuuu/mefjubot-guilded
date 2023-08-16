@@ -1,7 +1,7 @@
 {
     "name": "freegames",
     "private": true,
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Tells you about games that are free!",
     "author": "Meffiu",
     "main": "dist/index.js",
