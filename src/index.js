@@ -40,11 +40,12 @@ client.on("ready", async () => {
         if (index === 0) return;
         for (i = index - 1; i >= 0; i--) {
             let game = freegames.data.children[i].data;
+            const image = game.preview ? game.preview.images[0].source.url.replace('amp;', '') : '';
             config.serverDatas.forEach(async (e) => {
                 const channel = await client.channels.fetch(e.channel, true);
                 const em = new Embed({
                     author: { name: game.title, url: `https://www.reddit.com${game.permalink}` },
-                    image: { url: `${game.preview.images[0].source.url.replace('amp;', '')}` },
+                    image: { url: `${image}` },
                     footer: { text: 'Free Games!', icon_url: client.user.avatar },
                     color: '#00FFFF'
                 });
